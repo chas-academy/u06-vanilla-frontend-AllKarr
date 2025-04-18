@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    background-color: #336543;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .sidebar {
+    background-color: #2E7234;
+    width: 200px;
+    padding: 10px;
+    height: 100vh;
+  }
+  
+  .sidebar button {
+    background-color: #1D4620;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .sidebar button:hover {
+    background-color: #37C943;
+  }
+  
+  .main-layout {
+    display: flex;
+  }
+  
+  main {
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  h1 {
+    color: #37C943;
+    text-align: center;
+  }
+  
+  .form-container input, .form-container select {
+    display: block;
+    background-color: #336543;
+    color: white;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    width: 100%;
+  }
+  
+  .display-box {
+    background-color: #D9D9D9;
+    margin-top: 20px;
+    padding: 10px;
+  }
+  
+  .display-box .item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .display-box .item button {
+    margin-left: 10px;
+  }
+  
+  button.edit {
+    background-color: #8D541C;
+    color: white;
+    border: none;
+    padding: 5px;
+  }
+  
+  button.delete {
+    background-color: #791C1C;
+    color: white;
+    border: none;
+    padding: 5px;
+  }
+  
+  .register-box {
+    width: 700px;
+    height: 700px;
+    background-color: #336543;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .register-box input {
+    background-color: #1D4620;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  input, select, button {
+    background-color: #336543;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #37C943;
+    cursor: pointer;
+  }
+  

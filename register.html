@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/auth.js"></script>
+</head>
+<body>
+    <header style="display: flex; justify-content: space-between; align-items: center; background-color: #336543; color: white; padding: 10px;">
+        <div id="header-left">
+          <!-- Will be replaced with Welcome username! if logged in -->
+          <a href="index.html" style="text-decoration: none; color: #37C943;">Finance Manager</a>
+        </div>
+        <div id="header-right">
+          <!-- Login form if logged out -->
+          <input id="login-username" placeholder="Username" />
+          <input id="login-password" type="password" placeholder="Password" />
+          <button id="login-btn">Login</button>
+          <button onclick="location.href='register.html'">Register</button>
+        </div>
+      </header>
+      
+
+  <div class="register-box">
+    <h2>Register New User</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="register-btn">Register</button>
+  </div>
+</body>
+</html>
