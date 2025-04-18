@@ -53,7 +53,7 @@ body {
     margin: 10px 0;
     padding: 10px;
     border: none;
-    width: 100%;
+    width: 99%;
   }
   
   .display-box {
@@ -88,7 +88,7 @@ body {
   
   .register-box {
     width: 700px;
-    height: 700px;
+    height: 500px;
     background-color: #336543;
     margin: 0 auto;
     padding: 20px;
@@ -97,6 +97,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 10%;
   }
   
   .register-box input {
@@ -104,7 +105,7 @@ body {
     color: white;
     padding: 10px;
     margin: 10px 0;
-    width: 100%;
+    width: 95%;
   }
 
   input, select, button {

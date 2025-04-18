@@ -41,22 +41,28 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       
   
-    document.getElementById("summary-budgets")?.addEventListener("change", async (e) => {
-      const box = document.getElementById("summary-output");
-      if (e.target.checked) {
-        try {
-          const res = await fetch(`${API_BASE}/budgets/summary`, {
-            headers: { "x-api-key": getApiKey() },
-          });
-          const data = await res.json();
-          box.innerText = JSON.stringify(data, null, 2);
-        } catch {
-          box.innerText = "Error loading summary.";
+      let summaryVisible = false;
+
+      document.getElementById("summary-budgets")?.addEventListener("click", async () => {
+        const box = document.getElementById("summary-output");
+      
+        if (!summaryVisible) {
+          try {
+            const res = await fetch(`${API_BASE}/budgets/summary`, {
+              headers: { "x-api-key": getApiKey() },
+            });
+            const data = await res.json();
+            box.innerText = JSON.stringify(data, null, 2);
+          } catch {
+            box.innerText = "Error loading summary.";
+          }
+        } else {
+          box.innerText = "";
         }
-      } else {
-        box.innerText = "";
-      }
-    });
+      
+        summaryVisible = !summaryVisible;
+      });
+      
   
     async function fetchBudgetsSorted() {
       try {
