@@ -22,9 +22,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  document.getElementById("sort-transactions")?.addEventListener("change", (e) => {
-    e.target.checked ? fetchTransactionsSorted() : fetchTransactions();
-  });
+document.getElementById("search-transactions")?.addEventListener("input", (e) => {
+  const term = e.target.value.trim().toLowerCase();
+  if (!term) return fetchTransactions();
+
+  fetch(`${API_BASE}/transactions`, {
+    headers: { "x-api-key": getApiKey() },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const filtered = data.filter((t) =>
+        t.category.toLowerCase().includes(term)
+      );
+      renderTransactions(filtered);
+    });
+});
+
 
   document.getElementById("summary-transactions")?.addEventListener("change", async (e) => {
     const box = document.getElementById("summary-output");

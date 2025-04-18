@@ -11,7 +11,7 @@
     <header style="display: flex; justify-content: space-between; align-items: center; background-color: #336543; color: white; padding: 10px;">
         <div id="header-left">
           <!-- Will be replaced with Welcome username! if logged in -->
-          <a href="index.html" style="text-decoration: none; color: #37C943;">Finance Manager</a>
+          <a href="index.html" style="text-decoration: none; color: #ffffff;">Finance Manager</a>
         </div>
         <div id="header-right">
           <!-- Login form if logged out -->
@@ -42,10 +42,18 @@
         </select>
         <button id="add-transaction">Add New Transaction</button>
 
-        <div class="checkboxes">
-          <label><input type="checkbox" id="sort-category"> Sort by Category</label>
-          <label><input type="checkbox" id="avg-spending"> Average Spending per Category</label>
-        </div>
+        <div class="filter-section">
+            <label>
+                <input id="search-transactions" placeholder="Search category..." />
+            </label>
+          
+            <label>
+                <button id="summary-transactions">Average per Category</button>
+            </label>
+          
+            <pre id="summary-output" class="summary-box"></pre>
+          </div>
+          
       </div>
 
       <div id="transactions-display" class="display-box"></div>

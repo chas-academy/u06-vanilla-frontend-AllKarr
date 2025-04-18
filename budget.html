@@ -11,7 +11,7 @@
     <header style="display: flex; justify-content: space-between; align-items: center; background-color: #336543; color: white; padding: 10px;">
         <div id="header-left">
           <!-- Will be replaced with Welcome username! if logged in -->
-          <a href="index.html" style="text-decoration: none; color: #37C943;">Finance Manager</a>
+          <a href="index.html" style="text-decoration: none; color: #ffffff;">Finance Manager</a>
         </div>
         <div id="header-right">
           <!-- Login form if logged out -->
@@ -37,10 +37,18 @@
         <input type="number" id="budget-limit" placeholder="Limit">
         <button id="add-budget">Add New Budget</button>
 
-        <div class="checkboxes">
-          <label><input type="checkbox" id="sort-budget-category"> Sort by Category</label>
-          <label><input type="checkbox" id="monthly-summary"> Monthly Summary per Category</label>
-        </div>
+        <div class="filter-section">
+            <label>
+                <input id="search-budgets" placeholder="Search category..." />
+            </label>
+          
+            <label>
+                <button id="summary-budgets">Monthly Summary</button>
+            </label>
+          
+            <pre id="summary-output"></pre> <!-- to display the summary JSON -->
+          </div>
+          
       </div>
 
       <div id="budgets-display" class="display-box"></div>

@@ -121,3 +121,70 @@ body {
     cursor: pointer;
   }
   
+  .filter-section {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #2e7234;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .filter-section label {
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .filter-section input[type="checkbox"] {
+    margin-right: 6px;
+    accent-color: #37c943;
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+  }
+  
+  .filter-section input[type="checkbox"]:hover {
+    transform: scale(1.3);
+  }
+  
+  .summary-box {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #d9d9d9;
+    color: black;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    max-height: 300px;
+    overflow: auto;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  
+  .summary-box.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .item {
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
