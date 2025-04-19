@@ -1,62 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Finance Manager</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/auth.js"></script>
   <script defer src="js/transactions.js"></script>
+  <script defer src="js/budgets.js"></script>
+  <script defer>
+    // Enkel flikväxling mellan sektionerna
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("tab-transactions").addEventListener("click", () => {
+        document.getElementById("transactions-section").style.display = "block";
+        document.getElementById("budgets-section").style.display = "none";
+      });
+
+      document.getElementById("tab-budgets").addEventListener("click", () => {
+        document.getElementById("transactions-section").style.display = "none";
+        document.getElementById("budgets-section").style.display = "block";
+      });
+
+      // Visa transaktioner som startläge
+      document.getElementById("transactions-section").style.display = "block";
+      document.getElementById("budgets-section").style.display = "none";
+    });
+  </script>
 </head>
+
 <body>
-    <header style="display: flex; justify-content: space-between; align-items: center; background-color: #336543; color: white; padding: 10px;">
-        <div id="header-left">
-          <!-- Will be replaced with Welcome username! if logged in -->
-          <a href="index.html" style="text-decoration: none; color: #ffffff;">Finance Manager</a>
-        </div>
-        <div id="header-right">
-          <!-- Login form if logged out -->
-          <input type="text" id="username" placeholder="Username">
-          <input type="password" id="password" placeholder="Password">
-          <button id="login-btn">Login</button>
-          <button onclick="location.href='register.html'">Register</button>
-          <button id="logout-btn" style="display: none;">Logout</button>
-        </div>
-      </header>
-      
+  <header style="display: flex; justify-content: space-between; align-items: center; background-color: #336543; color: white; padding: 10px;">
+    <div>
+      <a href="#" style="text-decoration: none; color: #ffffff;">Finance Manager</a>
+      <span id="welcome-msg" style="margin-left: 10px;"></span>
+    </div>
+    <div>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button id="login-btn">Login</button>
+      <button onclick="location.href='register.html'">Register</button>
+      <button id="logout-btn" style="display: none;">Logout</button>
+    </div>
+  </header>
 
   <div class="main-layout">
+    <!-- Sidebar -->
     <aside class="sidebar">
-      <a href="index.html"><button>Transactions</button></a>
-      <a href="budget.html"><button>Budgets</button></a>
+      <button id="tab-transactions">Transactions</button>
+      <button id="tab-budgets">Budgets</button>
     </aside>
 
     <main>
       <h1>Finance Manager</h1>
-      <div class="form-container">
-        <input type="text" id="description" placeholder="Description">
-        <input type="number" id="amount" placeholder="Amount">
-        <input type="text" id="category" placeholder="Category">
-        <select id="type">
-          <option value="expense">Expense</option>
-          <option value="income">Income</option>
-        </select>
-        <button id="add-transaction">Add New Transaction</button>
 
-        <div class="filter-section">
-            <label>
-                <input id="search-transactions" placeholder="Search category..." />
-            </label>
-          
-            <label>
-                <button id="summary-transactions">Average per Category</button>
-            </label>
-          
+      <!-- Transactions Section -->
+      <section id="transactions-section">
+        <div class="form-container">
+          <input type="text" id="description" placeholder="Description" />
+          <input type="number" id="amount" placeholder="Amount" />
+          <input type="text" id="category" placeholder="Category" />
+          <select id="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+          <button id="add-transaction">Add New Transaction</button>
+
+          <div class="filter-section">
+            <input id="search-transactions" placeholder="Search category..." />
+            <button id="summary-transactions">Average per Category</button>
             <pre id="summary-output" class="summary-box"></pre>
           </div>
-          
-      </div>
+        </div>
 
-      <div id="transactions-display" class="display-box"></div>
+        <div id="transactions-display" class="display-box"></div>
+      </section>
+
+      <!-- Budgets Section -->
+      <section id="budgets-section">
+        <div class="form-container">
+          <input type="text" id="budget-category" placeholder="Category" />
+          <input type="number" id="budget-limit" placeholder="Limit" />
+          <button id="add-budget">Add New Budget</button>
+
+          <div class="filter-section">
+            <input id="search-budgets" placeholder="Search category..." />
+            <button id="summary-budgets">Monthly Summary</button>
+            <pre id="summary-output-budgets" class="summary-box"></pre>
+          </div>
+        </div>
+
+        <div id="budgets-display" class="display-box"></div>
+      </section>
     </main>
   </div>
 </body>

@@ -2,18 +2,21 @@ if (typeof API_BASE === "undefined") {
     var API_BASE = "https://finance-api-1.onrender.com/api/v1";
   }
   
+  // 🔧 Gör variablerna till globala
+  let usernameInput, passwordInput, emailInput;
+  let loginBtn, registerBtn, logoutBtn, welcome;
+  
   document.addEventListener("DOMContentLoaded", () => {
-    const usernameInput = document.getElementById("username");
-    const passwordInput = document.getElementById("password");
-    const emailInput = document.getElementById("email");
+    // Tilldela DOM-elementen till de globala variablerna
+    usernameInput = document.getElementById("username");
+    passwordInput = document.getElementById("password");
+    emailInput = document.getElementById("email");
+    loginBtn = document.getElementById("login-btn");
+    registerBtn = document.getElementById("register-btn");
+    logoutBtn = document.getElementById("logout-btn");
+    welcome = document.getElementById("welcome-msg");
   
-    const loginBtn = document.getElementById("login-btn");
-    const registerBtn = document.getElementById("register-btn");
-    const logoutBtn = document.getElementById("logout-btn");
-  
-    const welcome = document.getElementById("welcome-msg");
-  
-    // Show welcome message if already logged in
+    // Visa welcome-message om redan inloggad
     const storedUser = localStorage.getItem("username");
     const storedApiKey = localStorage.getItem("apiKey");
   
@@ -22,27 +25,6 @@ if (typeof API_BASE === "undefined") {
       toggleAuthButtons(true);
     } else {
       toggleAuthButtons(false);
-    }
-  
-    function toggleAuthButtons(isLoggedIn) {
-      const headerLeft = document.getElementById("header-left");
-      const username = localStorage.getItem("username");
-  
-      if (isLoggedIn) {
-        if (loginBtn) loginBtn.style.display = "none";
-        if (registerBtn) registerBtn.style.display = "none";
-        if (usernameInput) usernameInput.style.display = "none";
-        if (passwordInput) passwordInput.style.display = "none";
-        if (logoutBtn) logoutBtn.style.display = "inline-block";
-        if (headerLeft) headerLeft.innerHTML = `Welcome ${username}!`;
-      } else {
-        if (loginBtn) loginBtn.style.display = "inline-block";
-        if (registerBtn) registerBtn.style.display = "inline-block";
-        if (usernameInput) usernameInput.style.display = "inline-block";
-        if (passwordInput) passwordInput.style.display = "inline-block";
-        if (logoutBtn) logoutBtn.style.display = "none";
-        if (headerLeft) headerLeft.innerHTML = `<a href="index.html" style="text-decoration: none; color: #ffffff;">Finance App</a>`;
-      }
     }
   
     loginBtn?.addEventListener("click", async () => {
@@ -65,6 +47,7 @@ if (typeof API_BASE === "undefined") {
           if (welcome) welcome.textContent = `Welcome ${username}!`;
           toggleAuthButtons(true);
           alert("Login successful!");
+          window.location.href = "index.html";
         } else {
           alert(data.message || "Login failed.");
         }
@@ -109,15 +92,15 @@ if (typeof API_BASE === "undefined") {
       localStorage.removeItem("username");
       toggleAuthButtons(false);
       alert("Logged out!");
+      window.location.href = "index.html";
     });
   });
   
-  // ✅ Sync login/logout across tabs
+  // ✅ Sync login/logout över flera flikar
   window.addEventListener("storage", (event) => {
     if (event.key === "apiKey") {
       const apiKey = localStorage.getItem("apiKey");
       const username = localStorage.getItem("username");
-      const welcome = document.getElementById("welcome-msg");
   
       if (apiKey) {
         if (welcome) welcome.textContent = `Welcome ${username}!`;
@@ -128,4 +111,25 @@ if (typeof API_BASE === "undefined") {
       }
     }
   });
+  
+  function toggleAuthButtons(isLoggedIn) {
+    const headerLeft = document.getElementById("header-left");
+    const username = localStorage.getItem("username");
+  
+    if (isLoggedIn) {
+      if (loginBtn) loginBtn.style.display = "none";
+      if (registerBtn) registerBtn.style.display = "none";
+      if (usernameInput) usernameInput.style.display = "none";
+      if (passwordInput) passwordInput.style.display = "none";
+      if (logoutBtn) logoutBtn.style.display = "inline-block";
+      if (headerLeft) headerLeft.innerHTML = `Welcome ${username}!`;
+    } else {
+      if (loginBtn) loginBtn.style.display = "inline-block";
+      if (registerBtn) registerBtn.style.display = "inline-block";
+      if (usernameInput) usernameInput.style.display = "inline-block";
+      if (passwordInput) passwordInput.style.display = "inline-block";
+      if (logoutBtn) logoutBtn.style.display = "none";
+      if (headerLeft) headerLeft.innerHTML = `<a href="index.html" style="text-decoration: none; color: #ffffff;">Finance App</a>`;
+    }
+  }
   
