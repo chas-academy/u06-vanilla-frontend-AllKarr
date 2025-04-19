@@ -89,6 +89,7 @@ body {
   .register-box {
     width: 700px;
     height: 500px;
+    opacity: 95%;
     background-color: #336543;
     margin: 0 auto;
     padding: 20px;
@@ -171,12 +172,35 @@ body {
   }
   
   .item {
-    margin-bottom: 10px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    animation: fadeIn 0.3s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
   }
+  
+  .actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .actions button {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .actions .edit {
+    background-color: #aa2501;
+    color: white;
+  }
+  
+  .actions .delete {
+    background-color: #800000;
+    color: white;
+  }
+  
   
   @keyframes fadeIn {
     from {
