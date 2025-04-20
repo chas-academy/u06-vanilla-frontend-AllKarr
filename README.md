@@ -19,7 +19,7 @@ This API provides the endpoints for managing:
 
 👉 [View the Figma Design](https://www.figma.com/design/3OY2oIYts4BxfqXY95UfNJ/U06?node-id=0-1&p=f&t=rMMcH0PAXOKHzH0C-0)
 
-Our frontend is built based on this design, focusing on clean, accessible layouts with mobile and desktop responsiveness.
+My frontend is built based on this design, focusing on clean, accessible layouts with mobile and desktop responsiveness.
 
 ## 📌 Features
 
